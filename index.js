@@ -25,9 +25,13 @@ client.on('ready', () => {
             intents: [discordJs.GatewayIntentBits.Guilds]
         });
         const target = exchangeConfig.currency;
-        dummyClient.login(exchangeConfig.token).then(function () {
+        dummyClient.login(exchangeConfig.token).then(async function () {
+            const guild = await dummyClient.guilds.fetch(guild_id);
             console.log(`${dummyClient.user.tag} is listening!`);
-            dummy[target] = dummyClient;
+            dummy[target] = {};
+            dummy[target]['client'] = dummyClient;
+            dummy[target]['guild'] = guild;
+            dummy[target]['toFixed'] = exchangeConfig.toFixed;
         });
     }
     // register interval
@@ -35,13 +39,15 @@ client.on('ready', () => {
 });
 
 function getExchangeRate() {
-    for (let [key, dummyClient] of Object.entries(dummy)) {
+    for (let [key, clientData] of Object.entries(dummy)) {
+        const dummyClient = clientData['client'];
+        const guild = clientData['guild'];
+        const toFixed = clientData['toFixed'];
         let formatUrl = `${url}${currency.toLowerCase()}/${key.toLowerCase()}.json`;
         axios.get(formatUrl).then(async function (response) {
             let rate = response.data[key.toLowerCase()];
-            rate = parseFloat(rate).toFixed(2)
+            rate = parseFloat(rate).toFixed(toFixed)
             const name = `${currency} = ${rate} ${key}`;
-            const guild = await dummyClient.guilds.fetch(guild_id);
             guild.members.fetch(dummyClient.user.id).then(function (member) {
                 member.setNickname(name).then(function () {
                     console.log(new Date().toLocaleTimeString() + ": Name updated to " + name);

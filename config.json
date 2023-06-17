@@ -1,20 +1,14 @@
 {
-  "token": "bot-token",
+  "token": "-",
   "app_id": "app-id",
+  "guild_id": "-",
   "current_currency": "USD",
-  "delay_in_seconds": 10,
+  "delay_in_seconds": 15,
   "exchange": [
     {
-      "token": "bot-token",
-      "currency": "VND"
-    },
-    {
-      "token": "bot-token",
-      "currency": "VND"
-    },
-    {
-      "token": "bot-token",
-      "currency": "VND"
+      "token": "-",
+      "currency": "VND",
+      "toFixed": 0
     }
   ]
 }
