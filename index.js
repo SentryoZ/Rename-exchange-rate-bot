@@ -12,6 +12,7 @@ const delay = data.delay_in_seconds;
 const client = new discordJs.Client({
     intents: [discordJs.GatewayIntentBits.Guilds]
 });
+const guild_id = data.guild_id;
 const dummy = [];
 // Login to Discord with your client's token
 client.login(token).then(() => console.log("Logged in!"));
@@ -36,10 +37,16 @@ client.on('ready', () => {
 function getExchangeRate() {
     for (let [key, dummyClient] of Object.entries(dummy)) {
         let formatUrl = `${url}${currency.toLowerCase()}/${key.toLowerCase()}.json`;
-        axios.get(formatUrl).then(function (response) {
-            let rate = response.data[key];
-            rate = parseFloat(rate).toFixed(4)
-            dummyClient.user.setUsername(`${currency} = ${key} ${rate}`);
+        axios.get(formatUrl).then(async function (response) {
+            let rate = response.data[key.toLowerCase()];
+            rate = parseFloat(rate).toFixed(2)
+            const name = `${currency} = ${rate} ${key}`;
+            const guild = await dummyClient.guilds.fetch(guild_id);
+            guild.members.fetch(dummyClient.user.id).then(function (member) {
+                member.setNickname(name).then(function () {
+                    console.log(new Date().toLocaleTimeString() + ": Name updated to " + name);
+                });
+            })
         })
     }
 }
