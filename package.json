@@ -1,0 +1,15 @@
+{
+  "name": "base-discord-bot",
+  "version": "1.0.0",
+  "description": "Base for discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SentryoZVN",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.6.0",
+    "dotenv": "^16.0.3"
+  }
+}
