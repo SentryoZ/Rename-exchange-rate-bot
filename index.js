@@ -35,12 +35,10 @@ client.on('ready', () => {
 
 function getExchangeRate() {
     for (let [key, dummyClient] of Object.entries(dummy)) {
-        currency = currency.toLowerCase();
-        key = key.toLowerCase();
-        let formatUrl = `${url}${currency}/${key}.json`;
+        let formatUrl = `${url}${currency.toLowerCase()}/${key.toLowerCase()}.json`;
         axios.get(formatUrl).then(function (response) {
             let rate = response.data[key];
-            rate.toFixed(4)
+            rate = parseFloat(rate).toFixed(4)
             dummyClient.user.setUsername(`${currency} = ${key} ${rate}`);
         })
     }

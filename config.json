@@ -7,6 +7,14 @@
     {
       "token": "bot-token",
       "currency": "VND"
+    },
+    {
+      "token": "bot-token",
+      "currency": "VND"
+    },
+    {
+      "token": "bot-token",
+      "currency": "VND"
     }
   ]
 }
