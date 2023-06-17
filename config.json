@@ -1,0 +1,12 @@
+{
+  "token": "MTExOTU1NzQ3NzU5NjQwMTc0Ng.GrJJpz.Oxz_EnMnK32W7a4pIm2j-T9u0YJD45dyQc49Ds",
+  "app_id": "98c8654cbcbc4f318a4b607157592c14",
+  "current_currency": "USD",
+  "delay_in_seconds": 10,
+  "exchange": [
+    {
+      "token": "MTExOTUxMzkzMTY4MjE2MDc4MQ.GRjX3-.Ep0wcC_LDqrGPhvTP30KZjrViLV8NNYle1oNmI",
+      "currency": "VND"
+    }
+  ]
+}
