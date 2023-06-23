@@ -1,12 +1,12 @@
 {
-  "token": "-",
+  "token": "MTExOTU1NzQ3NzU5NjQwMTc0Ng.G6kjEa.4T3cbgElwpkqryGEvEdgGj-SjhWApb8IiAWjaE",
   "app_id": "app-id",
-  "guild_id": "-",
+  "guild_id": "1112687665356214304",
   "current_currency": "USD",
   "delay_in_seconds": 15,
   "exchange": [
     {
-      "token": "-",
+      "token": "MTExOTU5MTM3NTgwMTk0MjA0Nw.G_frBk.ELKb4iDEM5yPEyumw6NcHbVisIhJO1U6VXQOkk",
       "currency": "VND",
       "toFixed": 0
     }
