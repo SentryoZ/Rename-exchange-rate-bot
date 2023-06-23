@@ -44,15 +44,19 @@ function getExchangeRate() {
         const guild = clientData['guild'];
         const toFixed = clientData['toFixed'];
         let formatUrl = `${url}${currency.toLowerCase()}/${key.toLowerCase()}.json`;
-        axios.get(formatUrl).then(async function (response) {
-            let rate = response.data[key.toLowerCase()];
-            rate = parseFloat(rate).toFixed(toFixed)
-            const name = `${currency} = ${rate} ${key}`;
-            guild.members.fetch(dummyClient.user.id).then(function (member) {
-                member.setNickname(name).then(function () {
-                    console.log(new Date().toLocaleTimeString() + ": Name updated to " + name);
-                });
+        try {
+            axios.get(formatUrl).then(async function (response) {
+                let rate = response.data[key.toLowerCase()];
+                rate = parseFloat(rate).toFixed(toFixed)
+                const name = `${currency} = ${rate} ${key}`;
+                guild.members.fetch(dummyClient.user.id).then(function (member) {
+                    member.setNickname(name).then(function () {
+                        console.log(new Date().toLocaleTimeString() + ": Name updated to " + name);
+                    });
+                })
             })
-        })
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
