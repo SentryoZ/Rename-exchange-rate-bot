@@ -54,7 +54,9 @@ function getExchangeRate() {
                         console.log(new Date().toLocaleTimeString() + ": Name updated to " + name);
                     });
                 })
-            })
+            }).catch(function (error) {
+                console.log(error);
+            });
         } catch (e) {
             console.log(e);
         }
